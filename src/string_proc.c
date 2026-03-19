@@ -32,3 +32,41 @@ void remove_spaces(const char *src, char *dst)
     }
     dst[j] = '\0';
 }
+
+/*
+ * Функция: split_by_indices
+ * 
+ * Назначение: разделяет строку на две по четным и нечетным индексам.
+ * Индексация начинается с 0 (четный индекс).
+ * 
+ * Алгоритм:
+ *   1. Проходим по всем символам исходной строки
+ *   2. Если индекс четный - символ идет в строку even
+ *   3. Если индекс нечетный - символ идет в строку odd
+ */
+void split_by_indices(const char *src, char *even, char *odd)
+{
+    int i = 0;
+    int e = 0;
+    int o = 0;
+    if (src == NULL || even == NULL || odd == NULL)
+    {
+        return;
+    }
+    while (src[i] != '\0')
+    {
+        if (i % 2 == 0)
+        {
+            even[e] = src[i];
+            e++;
+        }
+        else
+        {
+            odd[o] = src[i];
+            o++;
+        }
+        i++;
+    }
+    even[e] = '\0';
+    odd[o] = '\0';
+}
